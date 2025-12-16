@@ -22,6 +22,8 @@ passos repetidos, reduzindo o custo até encontrar uma solução razoável.
 # %% [markdown]
 # Importações
 
+import unittest
+
 # ---
 
 # %% [markdown]
@@ -121,19 +123,31 @@ def exemplo_simples() -> None:
     learning_rate = 0.1
     n_iterations = 100
 
-    final_theta0, final_theta1, custo = gradient_descent(
+    final_theta0, final_theta1, cost = gradient_descent(
         initial_intercept, initial_slope, x_data, y_data, learning_rate, n_iterations
     )
 
     print("Resultados do gradiente descendente:")
     print(f"Intercept final: {final_theta0:.4f}")
     print(f"Slope final: {final_theta1:.4f}")
-    print(f"Custo final: {custo[-1]:.4f}")
+    print(f"Custo final: {cost[-1]:.4f}")
 
 # ---
 
 # %% [markdown]
 # Testes
+
+class TestGC(unittest.TestCase):
+
+    def test_compute_cost_zero(self):
+
+        x = [0, 1, 2, 3]
+        y = [1, 3, 5, 7]
+
+        _, _, cost_history = gradient_descent(0.0, 0.0, x, y, learning_rate=0.1, n_iterations=20)
+
+        self.assertTrue(cost_history[1] < cost_history[0])
+        self.assertTrue(cost_history[2] < cost_history[1])
 
 if __name__ == "__main__":
     exemplo_simples()
