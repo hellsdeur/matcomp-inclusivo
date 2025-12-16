@@ -41,7 +41,7 @@ def compute_cost(intercept, slope, x, y):
     O MSE é definido como a média do quadrado das diferenças entre as
     previsões ``intercept + slope * xi`` e os valores reais ``yi``.
 
-    :param intecept: interceção da reta.
+    :param intercept: interceção da reta.
     :param slope: inclinação da reta.
     :param x: valores de entrada.
     :param y: valores alvo correspondentes.
@@ -123,13 +123,13 @@ def exemplo_simples() -> None:
     learning_rate = 0.1
     n_iterations = 100
 
-    final_theta0, final_theta1, cost = gradient_descent(
+    final_intercept, final_slope, cost = gradient_descent(
         initial_intercept, initial_slope, x_data, y_data, learning_rate, n_iterations
     )
 
     print("Resultados do gradiente descendente:")
-    print(f"Intercept final: {final_theta0:.4f}")
-    print(f"Slope final: {final_theta1:.4f}")
+    print(f"Intercept final: {final_intercept:.4f}")
+    print(f"Slope final: {final_slope:.4f}")
     print(f"Custo final: {cost[-1]:.4f}")
 
 # ---
