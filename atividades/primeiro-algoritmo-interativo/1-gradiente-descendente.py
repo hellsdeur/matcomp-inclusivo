@@ -149,5 +149,15 @@ class TestGC(unittest.TestCase):
         self.assertTrue(cost_history[1] < cost_history[0])
         self.assertTrue(cost_history[2] < cost_history[1])
 
+    def test_compute_values(self):
+
+        x = [0, 1, 2, 3]
+        y = [1, 3, 5, 7]
+
+        final_intercept, final_slope, _ = gradient_descent(0.0, 0.0, x, y, learning_rate=0.1, n_iterations=100)
+
+        self.assertAlmostEqual(final_intercept, 1.0, places=1)
+        self.assertAlmostEqual(final_slope, 2.0, places=1)
+
 if __name__ == "__main__":
     exemplo_simples()
